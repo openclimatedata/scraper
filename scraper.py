@@ -1,22 +1,22 @@
-from datetime import datetime
-import os
 import logging
-import sys
+import os
 import pandas as pd
-from morphium import env
-from countrynames import to_alpha_3
-log = logging.getLogger("openclimatedata-scraper")
+import sqlite3
+import sys
 
+from countrynames import to_alpha_3
+from datetime import datetime
+
+logging.basicConfig()
+log = logging.getLogger("openclimatedata-scraper")
+log.setLevel(logging.INFO)
 
 treaty_collection_url = ("https://treaties.un.org/Pages/" +
                          "showDetails.aspx?objid=0800000280458f37")
 
-data_path = env("DATA_PATH", "data")
-outfile = os.path.join(data_path, "paris-agreement-ratification.csv")
-
 # Ratification and Signature status from the UN treaty collection.
 try:
-    log.info("Fetching %s", treaty_collection_url)
+    log.info("Fetching ratification data from web")
     tables = pd.read_html(treaty_collection_url, encoding="UTF-8")
 except ValueError as e:
     log.error("Error: %s", e)
@@ -69,5 +69,6 @@ status.loc[status["Ratification"].notnull() &
 status.Name = status.Name.replace(
     "Czech Republic", "Czechia")
 
-status.to_csv(outfile)
-log.info("Wrote data to `%s`", outfile)
+conn = sqlite3.connect("data.sqlite")
+status.to_sql("data", conn, if_exists="replace")
+log.info("Wrote data to database")

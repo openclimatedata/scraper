@@ -1,6 +1,6 @@
+unidecode
 countrynames
 pandas
-morphium
 lxml
 html5lib
 bs4
