@@ -4,3 +4,6 @@
 [submodule "doha-amendment-entry-into-force"]
 	path = doha-amendment-entry-into-force
 	url = https://github.com/openclimatedata/doha-amendment-entry-into-force
+[submodule "kigali-amendment-entry-into-force"]
+	path = kigali-amendment-entry-into-force
+	url = https://github.com/openclimatedata/kigali-amendment-entry-into-force
