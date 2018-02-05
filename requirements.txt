@@ -1,6 +1,9 @@
+wheel
 unidecode
 countrynames
 pandas
 lxml
 html5lib
 bs4
+goodtables
+csvs-to-sqlite
