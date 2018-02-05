@@ -1,3 +1,6 @@
 [submodule "paris-agreement-entry-into-force"]
 	path = paris-agreement-entry-into-force
 	url = https://github.com/openclimatedata/paris-agreement-entry-into-force
+[submodule "doha-amendment-entry-into-force"]
+	path = doha-amendment-entry-into-force
+	url = https://github.com/openclimatedata/doha-amendment-entry-into-force
