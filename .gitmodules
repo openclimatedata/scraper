@@ -7,3 +7,6 @@
 [submodule "kigali-amendment-entry-into-force"]
 	path = kigali-amendment-entry-into-force
 	url = https://github.com/openclimatedata/kigali-amendment-entry-into-force
+[submodule "ndcs"]
+	path = ndcs
+	url = https://github.com/openclimatedata/ndcs

@@ -1,28 +1,27 @@
+import glob
 import subprocess
+from pathlib import Path
 
-subprocess.run([
-    "python",
-    "scripts/process.py"
-], cwd="paris-agreement-entry-into-force")
+# List of Data Packages to run scraper for
+dps = [
+    "paris-agreement-entry-into-force",
+    "doha-amendment-entry-into-force",
+    "kigali-amendment-entry-into-force",
+    "ndcs"
+]
 
-subprocess.run([
-    "python",
-    "scripts/process.py"
-], cwd="doha-amendment-entry-into-force")
+for dp in dps:
+    path = Path(dp)
+    subprocess.run([
+        "python",
+        "scripts/process.py"
+    ], cwd=dp)
 
-subprocess.run([
-    "python",
-    "scripts/process.py"
-], cwd="kigali-amendment-entry-into-force")
-
+output_csv_files = glob.glob("**/data/*.csv")
 
 subprocess.run([
     "csvs-to-sqlite",
     "--replace-tables",
-    ("paris-agreement-entry-into-force/data/"
-     "paris-agreement-entry-into-force.csv"),
-    ("doha-amendment-entry-into-force/data/"
-     "doha-amendment.csv"),
-    "kigali-amendment-entry-into-force/data/kigali-amendment.csv",
+    *output_csv_files,
     "data.sqlite"
 ])
