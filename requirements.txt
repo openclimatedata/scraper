@@ -1,9 +1,10 @@
-wheel
-unidecode
+beautifulsoup4>=4.5
+countrygroups
 countrynames
-pandas
-lxml
-html5lib
-bs4
 goodtables
-csvs-to-sqlite
+html5lib==0.999999999
+lxml>=3.7
+normality
+pandas
+requests
+unidecode
